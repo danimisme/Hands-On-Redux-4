@@ -4,7 +4,7 @@ const initialState = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
-  isLodading: false,
+  isLoading: false,
 };
 
 export const deposit = createAsyncThunk(
@@ -58,14 +58,14 @@ const accountSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(deposit.fulfilled, (state, action) => {
-      state.isLodading = false;
+      state.isLoading = false;
       state.balance = state.balance + action.payload;
     });
     builder.addCase(deposit.pending, (state) => {
-      state.isLodading = true;
+      state.isLoading = true;
     });
     builder.addCase(deposit.rejected, (state) => {
-      state.isLodading = false;
+      state.isLoading = false;
     });
   },
 });
